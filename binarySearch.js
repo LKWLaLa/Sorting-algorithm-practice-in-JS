@@ -10,19 +10,19 @@ function binarySearch(item, input, start, end){
       }
     }
     else{
-      var checkIndex = Math.floor(((end - start)/2) + start);
+      var mid = Math.floor(((end - start)/2) + start);
 
-      if(input[checkIndex] < item){
-        start = checkIndex + 1
+      if(input[mid] < item){
+        start = mid + 1
         return binarySearch(item, input, start, end);
       };
-      
-      if(input[checkIndex] > item){
-        end = checkIndex - 1
+
+      if(input[mid] > item){
+        end = mid - 1
         return binarySearch(item, input, start, end);
         // MUST use return statement here, or ultimate return value will be undefined.
       };
-        return checkIndex
+        return mid
     };
 
 };
