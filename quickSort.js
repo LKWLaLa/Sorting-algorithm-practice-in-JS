@@ -1,5 +1,7 @@
 var someThings = [3, 8, 2, 90, 67, 56, 1, 300, 0]
 
+var theSameThings = [2,2,2,2,2,2,2,2]
+
 
 function _quickSort(list, start, end){
     if ((end - start) <= 1){ return }
@@ -9,6 +11,7 @@ function _quickSort(list, start, end){
       var smallerArray = [];
 
      for(i = start; i < end; i ++){
+        if(i == pivot){continue}
         if(list[i] <= list[pivot]){
           smallerArray.push(list[i])
         }
@@ -16,11 +19,8 @@ function _quickSort(list, start, end){
           greaterArray.push(list[i])
         }
      }
+     smallerArray.push(list[pivot])
 
-     /*
-     Array.prototype.splice.apply(list, [start, smallerArray.length].concat(smallerArray));
-     Array.prototype.splice.apply(list, [(start + smallerArray.length), greaterArray.length].concat(greaterArray));
-    */
 
     var s = start
 
@@ -35,7 +35,7 @@ function _quickSort(list, start, end){
        s++
     }
 
-    _quickSort(list, start, start + smallerArray.length);
+    _quickSort(list, start, start + smallerArray.length - 1);
     _quickSort(list, start + smallerArray.length, end );
 }
 
@@ -51,3 +51,4 @@ function getRandomInt(min, max) {
 
 
 console.log(quickSort(someThings));
+console.log(quickSort(theSameThings));
